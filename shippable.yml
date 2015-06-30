@@ -7,6 +7,9 @@ node_js:
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
 
+addons:
+ postgresql : "9.3"
+
 # Postgres binds to 127.0.0.1 by default and is started on boot. Default username is "postgres" with no password
 # Create a DB as part of before script to use it
 # Make folders for the reports, and create the SQL db
