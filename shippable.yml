@@ -13,6 +13,7 @@ env:
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
+  - which dropdb && dropdb -e --if-exists or_room_test
   - psql -c 'CREATE DATABASE app_test;' -U postgres
 
 script:
