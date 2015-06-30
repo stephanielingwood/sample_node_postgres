@@ -14,10 +14,11 @@ addons:
 # Create a DB as part of before script to use it
 # Make folders for the reports, and create the SQL db
 before_script:
+  - psql -c 'CREATE DATABASE or_room_test;' -U postgres
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - which dropdb && dropdb -e --if-exists or_room_test
-  - psql -c 'CREATE DATABASE app_test;' -U postgres
+  - psql -c 'CREATE DATABASE or_room_test;' -U postgres
 
 script:
   - npm test
