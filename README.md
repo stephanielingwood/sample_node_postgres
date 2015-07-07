@@ -9,4 +9,8 @@ To run the tests:
 
 This sample is built for Shippable, a docker based continuous integration and deployment platform.
 
+<<<<<<< HEAD
 I love me some merge conflict.
+=======
+Merge conflicts are fun.
+>>>>>>> 3615271eb962605ccc79cb0862a9bef2e2df3406
