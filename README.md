@@ -9,4 +9,4 @@ To run the tests:
 
 This sample is built for Shippable, a docker based continuous integration and deployment platform.
 
-More fun with merge conflicts.
+yay for merge conflict!
