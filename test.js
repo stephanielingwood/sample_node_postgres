@@ -8,7 +8,7 @@ describe('Postgres Database', function () {
       done();
     }, 1000);
   });
-  it('should create a table', function (done) {
+  it('should create a table that is not as awesome', function (done) {
     db.schema.hasTable('things').then(function (exists) {
       if (!exists) {
         db.schema.createTable('things', function (table) {
