@@ -1,45 +1,32 @@
 language: node_js
 
-node_js:
-  - 0.10.36
-  
+node_js: "0.10.36"
+
+# build_image:
+#   name: shippable/minv2
+#   net: host
+#   privileged: true
+
 before_install:
   - node --version
   - npm install npm@2.3.0 -g
   - npm --version
-  - npm cache clean  
-  
+  - npm cache clean
+
 cache: true
 
 services:
   - redis
 
 addons:
- postgresql : "9.3"
+  postgresql: "9.3"
 
-# For xunit-file module to put results in shippable folder
-# env:
-  # - XUNIT_FILE=shippable/testresults/result.xml
 env:
   global:
-    # HEROKU_API_KEY
-    - secure: <clip>
-    # NOTIFY_WEBHOOK_URL
-    - secure: <clip>
     - DATABASE_URL=postgres://postgres:@localhost:5432/app_test
     - DATABASE_DIALECT=postgres
-    - OPENTOK_KEY=fake-key
-    - OPENTOK_SECRET=fake-secret
-    - AWS_ACCESS_KEY_ID=fake-key
-    - AWS_SECRET_ACCESS_KEY=fake-secret
-    - AWS_REGION=us-east-1
-    - AWS_S3_BUCKET=non-existent-bucket
 
-# Postgres binds to 127.0.0.1 by default and is started on boot. Default username is "postgres" with no password
-# Create a DB as part of before script to use it
-# Make folders for the reports, and create the SQL db
 before_script:
-  - psql -c 'CREATE DATABASE app_test;' -U postgres
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - which dropdb && dropdb -e --if-exists app_test
@@ -48,8 +35,6 @@ before_script:
 script:
   - npm test
 
-# Generate coverage report with istanbul
 after_script:
-#  - psql -c 'create database if not exists test;' -U postgres
-  - ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --ui=bdd --reporter=xunit-file
-  - ./node_modules/.bin/istanbul report cobertura --dir shippable/codecoverage/
+  - cp -R .build/testresults/* shippable/testresults/
+  - cp -R .build/coverage/* shippable/codecoverage/
