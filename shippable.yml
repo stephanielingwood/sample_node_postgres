@@ -3,12 +3,12 @@ language: node_js
 node_js:
   - 0.10.25
 
+addons:
+ postgresql : "9.3"
+
 # For xunit-file module to put results in shippable folder
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
-
-addons:
- postgresql : "9.3"
 
 # Postgres binds to 127.0.0.1 by default and is started on boot. Default username is "postgres" with no password
 # Create a DB as part of before script to use it
