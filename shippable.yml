@@ -38,5 +38,4 @@ script:
   - npm test
 
 after_script:
-  - cp -R .build/testresults/* shippable/testresults/
-  - cp -R .build/coverage/* shippable/codecoverage/
+  - echo 'after script'
