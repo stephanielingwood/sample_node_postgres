@@ -20,6 +20,7 @@ services:
 
 addons:
   postgresql: "9.2"
+  firefox: "20.0"
 
 env:
   global:
@@ -30,6 +31,7 @@ before_script:
   - psql -c 'CREATE DATABASE app_test;' -U postgres
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
+  - firefox -v
   - echo $SHIPPABLE_POSTGRES_VERSION
   - psql --version
   - which dropdb && dropdb -e --if-exists app_test
