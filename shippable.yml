@@ -20,7 +20,7 @@ services:
 
 addons:
   postgresql: "9.2"
-  firefox: "20.0"
+  firefox: "21.0"
 
 env:
   global:
