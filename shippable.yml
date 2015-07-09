@@ -8,6 +8,11 @@ before_install:
   - npm install npm@2.3.0 -g
   - npm --version
   - npm cache clean  
+  
+cache: true
+
+services:
+  - redis
 
 addons:
  postgresql : "9.3"
