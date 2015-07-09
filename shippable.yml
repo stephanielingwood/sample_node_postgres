@@ -18,9 +18,6 @@ cache: true
 services:
   - redis
 
-addons:
-  postgresql: "9.1"
-
 env:
   global:
     - DATABASE_URL=postgres://postgres:@localhost:5432/app_test
