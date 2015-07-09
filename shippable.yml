@@ -1,7 +1,13 @@
 language: node_js
 
 node_js:
-  - 0.10.25
+  - 0.10.36
+  
+before_install:
+  - node --version
+  - npm install npm@2.3.0 -g
+  - npm --version
+  - npm cache clean  
 
 addons:
  postgresql : "9.3"
