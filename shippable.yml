@@ -33,7 +33,7 @@ before_script:
   - mkdir -p shippable/codecoverage
   - firefox -v
   - echo $SHIPPABLE_POSTGRES_VERSION
-  - psql \des+
+  - postgres -V
   - psql --version
   - which dropdb && dropdb -e --if-exists app_test
   - psql -c 'CREATE DATABASE app_test;' -U postgres
