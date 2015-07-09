@@ -18,8 +18,22 @@ addons:
  postgresql : "9.3"
 
 # For xunit-file module to put results in shippable folder
+# env:
+  # - XUNIT_FILE=shippable/testresults/result.xml
 env:
-  - XUNIT_FILE=shippable/testresults/result.xml
+  global:
+    # HEROKU_API_KEY
+    - secure: <clip>
+    # NOTIFY_WEBHOOK_URL
+    - secure: <clip>
+    - DATABASE_URL=postgres://postgres:@localhost:5432/app_test
+    - DATABASE_DIALECT=postgres
+    - OPENTOK_KEY=fake-key
+    - OPENTOK_SECRET=fake-secret
+    - AWS_ACCESS_KEY_ID=fake-key
+    - AWS_SECRET_ACCESS_KEY=fake-secret
+    - AWS_REGION=us-east-1
+    - AWS_S3_BUCKET=non-existent-bucket
 
 # Postgres binds to 127.0.0.1 by default and is started on boot. Default username is "postgres" with no password
 # Create a DB as part of before script to use it
