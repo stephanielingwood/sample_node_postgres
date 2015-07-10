@@ -19,7 +19,7 @@ services:
   - redis
 
 addons:
-  postgresql: "9.2"
+  postgresql: "9.1"
   firefox: "21.0"
 
 env:
